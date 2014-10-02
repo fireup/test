@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A073A1319DD20BA007ABD3F /* TestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A073A1219DD20BA007ABD3F /* TestHelper.m */; };
 		1A4EFF8519C15942000EF491 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4EFF8419C15942000EF491 /* Foundation.framework */; };
 		1A4EFF8819C15942000EF491 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4EFF8719C15942000EF491 /* main.m */; };
 		1A4EFF8C19C15942000EF491 /* test2.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A4EFF8B19C15942000EF491 /* test2.1 */; };
+		1A4EFF9419C1595B000EF491 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4EFF9319C1595B000EF491 /* Test.m */; };
+		1A4EFF9C19C16807000EF491 /* SubTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4EFF9B19C16807000EF491 /* SubTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,11 +29,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A073A1019DD14EF007ABD3F /* Writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Writer.h; sourceTree = "<group>"; };
+		1A073A1119DD20BA007ABD3F /* TestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelper.h; sourceTree = "<group>"; };
+		1A073A1219DD20BA007ABD3F /* TestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelper.m; sourceTree = "<group>"; };
+		1A3B95F019DD2643005872A4 /* Test+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Test+helper.h"; sourceTree = "<group>"; };
 		1A4EFF8119C15942000EF491 /* test2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test2; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4EFF8419C15942000EF491 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1A4EFF8719C15942000EF491 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1A4EFF8A19C15942000EF491 /* test2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "test2-Prefix.pch"; sourceTree = "<group>"; };
 		1A4EFF8B19C15942000EF491 /* test2.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = test2.1; sourceTree = "<group>"; };
+		1A4EFF9219C1595B000EF491 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
+		1A4EFF9319C1595B000EF491 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
+		1A4EFF9A19C16807000EF491 /* SubTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTest.h; sourceTree = "<group>"; };
+		1A4EFF9B19C16807000EF491 /* SubTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +85,14 @@
 			isa = PBXGroup;
 			children = (
 				1A4EFF8719C15942000EF491 /* main.m */,
+				1A4EFF9219C1595B000EF491 /* Test.h */,
+				1A4EFF9319C1595B000EF491 /* Test.m */,
+				1A4EFF9A19C16807000EF491 /* SubTest.h */,
+				1A4EFF9B19C16807000EF491 /* SubTest.m */,
+				1A3B95F019DD2643005872A4 /* Test+helper.h */,
+				1A073A1119DD20BA007ABD3F /* TestHelper.h */,
+				1A073A1219DD20BA007ABD3F /* TestHelper.m */,
+				1A073A1019DD14EF007ABD3F /* Writer.h */,
 				1A4EFF8B19C15942000EF491 /* test2.1 */,
 				1A4EFF8919C15942000EF491 /* Supporting Files */,
 			);
@@ -140,6 +159,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A4EFF8819C15942000EF491 /* main.m in Sources */,
+				1A4EFF9419C1595B000EF491 /* Test.m in Sources */,
+				1A4EFF9C19C16807000EF491 /* SubTest.m in Sources */,
+				1A073A1319DD20BA007ABD3F /* TestHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +275,7 @@
 				1A4EFF9119C15942000EF491 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

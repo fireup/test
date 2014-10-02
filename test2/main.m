@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Test.h"
+#import "SubTest.h"
+#import "Test+helper.h"
+
 
 int main(int argc, const char * argv[])
 {
@@ -14,7 +18,15 @@ int main(int argc, const char * argv[])
     @autoreleasepool {
         
         // insert code here...
-        NSLog(@"Hello, World!");
+        Test *test1 = [[Test alloc] init];
+//        Test *test2 = [[Test alloc] init];
+        
+        SubTest *sub = [[SubTest alloc] init];
+//
+//        [sub logSuperVar];
+        NSString *fact = [sub factoid];
+        NSLog(@"%@", fact);
+        
         
     }
     return 0;
