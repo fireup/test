@@ -17,16 +17,26 @@ int main(int argc, const char * argv[])
 
     @autoreleasepool {
         
-        // insert code here...
+        NSString *str = @"greeting";
+        CFStringRef cstr = (__bridge_retained CFStringRef)str;
+        printf("string length = %ld", CFStringGetLength(cstr));
+        CFRelease(cstr);
+        
+//        CFStringRef cstr = CFStringCreateWithCString(NULL, "hello", kCFStringEncodingASCII);
+//        NSArray *data = [NSArray arrayWithObject:(__bridge_transfer NSString *)cstr];
+//        NSLog(@"%@", data);
+        
+        
+        
 //        Test *test1 = [[Test alloc] init];
 //        Test *test2 = [[Test alloc] init];
         
-        SubTest *sub = [[SubTest alloc] init];
-        
-        __weak SubTest *sub2 = sub;
-        sub = nil;
-        
-        [sub2 logSuperVar];
+//        SubTest *sub = [[SubTest alloc] init];
+//        
+//        __weak SubTest *sub2 = sub;
+//        sub = nil;
+//        
+//        [sub2 logSuperVar];
 //
 //        [sub logSuperVar];
 //        NSString *fact = [sub factoid];
