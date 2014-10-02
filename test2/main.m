@@ -18,14 +18,19 @@ int main(int argc, const char * argv[])
     @autoreleasepool {
         
         // insert code here...
-        Test *test1 = [[Test alloc] init];
+//        Test *test1 = [[Test alloc] init];
 //        Test *test2 = [[Test alloc] init];
         
         SubTest *sub = [[SubTest alloc] init];
+        
+        __weak SubTest *sub2 = sub;
+        sub = nil;
+        
+        [sub2 logSuperVar];
 //
 //        [sub logSuperVar];
-        NSString *fact = [sub factoid];
-        NSLog(@"%@", fact);
+//        NSString *fact = [sub factoid];
+//        NSLog(@"%@", fact);
         
         
     }

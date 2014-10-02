@@ -23,6 +23,7 @@
     if ((self = [super init])) {
         NSLog(@"%@: ", NSStringFromSelector(_cmd));
         helper = [[TestHelper alloc] init];
+        anotherVar = @"Test Inited AnotherVar";
     }
     return self;
 }
