@@ -60,7 +60,7 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "/Users/bonanzhang/Library/Developer/Xcode/DerivedData/BundleTest-eqtavatflvrytgfldqxftvuqcbtd/Build/Products/Debug/BundleTest.bundle"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>

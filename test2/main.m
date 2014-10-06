@@ -8,94 +8,43 @@
 
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
-#import "Test.h"
-#import "SubTest.h"
-#import "Test+helper.h"
-#import "BasicGreeter.h"
+#import <objc/message.h>
 
-@interface TestClass1 : NSObject { @public int myInt; }
-@end
-@implementation TestClass1
-@end
+static void display(id self, SEL _cmd)
+{
+    NSLog(@"Invoking method with selector %@ on %@ instance", NSStringFromSelector(_cmd), [self className]);
+}
 
 int main(int argc, const char * argv[])
 {
 
     @autoreleasepool {
         
-        id <Greeter> greeter = [[BasicGreeter alloc] init];
-        [greeter greeting:@"Hello"];
+        Class WidgetClass = objc_allocateClassPair([NSObject class], "Widget", 0);
         
-        NSString *bundlePath;
+        const char *types = "v@:";
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+        class_addMethod(WidgetClass, @selector(display), (IMP)display, types);
+#pragma clang diagnostic pop
         
-        if (argc != 2) {
-            NSLog(@"please provide a path");
-            
-        } else {
-            bundlePath = [NSString stringWithUTF8String:argv[1]];
-            NSBundle *greeterBundle = [NSBundle bundleWithPath:bundlePath];
-            
-            if (greeterBundle == nil) {
-                NSLog(@"bundle not found");
-                
-            } else {
-                NSError *error;
-                BOOL isLoaded = [greeterBundle loadAndReturnError:&error];
-                
-                if (!isLoaded) {
-                    NSLog(@"Error = %@", [error localizedDescription]);
-                    
-                } else {
-                    Class greeterClass = [greeterBundle principalClass]; //classNamed:"GreeterClass"
-                    greeter = [[greeterClass alloc] init];
-                    NSLog(@"%@", [greeter greeting:@"hello"]);
-                    
-                    greeter = nil;
-                    BOOL isUnloaded = [greeterBundle unload];
-                    if (!isUnloaded) {
-                        NSLog(@"Couldn't unload bundle");
-                    }
-                }
-            }
-        }
+        const char *height = "height";
+        class_addIvar(WidgetClass, height, sizeof(id), rint(log2(sizeof(id))), @encode(id));
         
-//        TestClass1 *tclA = [[TestClass1 alloc] init];
-//        tclA->myInt = 0xa5a5a5a5;
-//        TestClass1 *tclB = [[TestClass1 alloc] init];
-//        tclB->myInt = 0xc3c3c3c3;
-//        long tclSize = class_getInstanceSize([TestClass1 class]);
-//        NSData *obj1Data = [NSData dataWithBytes:(__bridge const void*)(tclA) length:tclSize];
-//        NSData *obj2Data = [NSData dataWithBytes:(__bridge const void*)(tclB) length:tclSize];
-//        
-//        NSLog(@"TestClass1 object tc1 contains %@", obj1Data);
-//        NSLog(@"TestClass2 object tc2 contains %@", obj2Data);
-//        NSLog(@"TestClass1 memory address= %p", [TestClass1 class]);
+        objc_registerClassPair(WidgetClass);
         
-//        NSString *str = @"greeting";
-//        CFStringRef cstr = (__bridge_retained CFStringRef)str;
-//        printf("string length = %ld", CFStringGetLength(cstr));
-//        CFRelease(cstr);
+        id widget = [[WidgetClass alloc] init];
         
-//        CFStringRef cstr = CFStringCreateWithCString(NULL, "hello", kCFStringEncodingASCII);
-//        NSArray *data = [NSArray arrayWithObject:(__bridge_transfer NSString *)cstr];
-//        NSLog(@"%@", data);
+        id value = [NSNumber numberWithInt:15];
+        [widget setValue:value forKey:[NSString stringWithUTF8String:height]];
         
+        objc_msgSend(widget, NSSelectorFromString(@"display"));
         
+        NSNumber *width = [NSNumber numberWithInt:10];
+        objc_setAssociatedObject(widget, @"width", width, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
-//        Test *test1 = [[Test alloc] init];
-//        Test *test2 = [[Test alloc] init];
-        
-//        SubTest *sub = [[SubTest alloc] init];
-//        
-//        __weak SubTest *sub2 = sub;
-//        sub = nil;
-//        
-//        [sub2 logSuperVar];
-//
-//        [sub logSuperVar];
-//        NSString *fact = [sub factoid];
-//        NSLog(@"%@", fact);
-        
+        id result = objc_getAssociatedObject(widget, @"width");
+        NSLog(@"Widget instance width = %@", result);
         
     }
     return 0;
