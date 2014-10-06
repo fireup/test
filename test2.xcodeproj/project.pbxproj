@@ -13,6 +13,7 @@
 		1A4EFF8C19C15942000EF491 /* test2.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A4EFF8B19C15942000EF491 /* test2.1 */; };
 		1A4EFF9419C1595B000EF491 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4EFF9319C1595B000EF491 /* Test.m */; };
 		1A4EFF9C19C16807000EF491 /* SubTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4EFF9B19C16807000EF491 /* SubTest.m */; };
+		1A6A84A619E2414300D93055 /* BasicGreeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A84A519E2414300D93055 /* BasicGreeter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +43,9 @@
 		1A4EFF9319C1595B000EF491 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		1A4EFF9A19C16807000EF491 /* SubTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTest.h; sourceTree = "<group>"; };
 		1A4EFF9B19C16807000EF491 /* SubTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTest.m; sourceTree = "<group>"; };
+		1A6A84A319E2410700D93055 /* Greeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Greeter.h; sourceTree = "<group>"; };
+		1A6A84A419E2414300D93055 /* BasicGreeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicGreeter.h; sourceTree = "<group>"; };
+		1A6A84A519E2414300D93055 /* BasicGreeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicGreeter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,9 @@
 			isa = PBXGroup;
 			children = (
 				1A4EFF8719C15942000EF491 /* main.m */,
+				1A6A84A319E2410700D93055 /* Greeter.h */,
+				1A6A84A419E2414300D93055 /* BasicGreeter.h */,
+				1A6A84A519E2414300D93055 /* BasicGreeter.m */,
 				1A4EFF9219C1595B000EF491 /* Test.h */,
 				1A4EFF9319C1595B000EF491 /* Test.m */,
 				1A4EFF9A19C16807000EF491 /* SubTest.h */,
@@ -158,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A6A84A619E2414300D93055 /* BasicGreeter.m in Sources */,
 				1A4EFF8819C15942000EF491 /* main.m in Sources */,
 				1A4EFF9419C1595B000EF491 /* Test.m in Sources */,
 				1A4EFF9C19C16807000EF491 /* SubTest.m in Sources */,

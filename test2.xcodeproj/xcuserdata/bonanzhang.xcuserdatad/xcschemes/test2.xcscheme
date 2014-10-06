@@ -57,6 +57,12 @@
             ReferencedContainer = "container:test2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "/Users/bonanzhang/Library/Developer/Xcode/DerivedData/BundleTest-eqtavatflvrytgfldqxftvuqcbtd/Build/Products/Debug/BundleTest.bundle"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

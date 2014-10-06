@@ -1,6 +1,6 @@
 //
 //  main.m
-//  test2
+//  Chapter 9 expert: runtime API
 //
 //  Created by Bonan Zhang on 11/09/2014.
 //  Copyright (c) 2014 fireup. All rights reserved.
@@ -11,6 +11,7 @@
 #import "Test.h"
 #import "SubTest.h"
 #import "Test+helper.h"
+#import "BasicGreeter.h"
 
 @interface TestClass1 : NSObject { @public int myInt; }
 @end
@@ -22,17 +23,53 @@ int main(int argc, const char * argv[])
 
     @autoreleasepool {
         
-        TestClass1 *tclA = [[TestClass1 alloc] init];
-        tclA->myInt = 0xa5a5a5a5;
-        TestClass1 *tclB = [[TestClass1 alloc] init];
-        tclB->myInt = 0xc3c3c3c3;
-        long tclSize = class_getInstanceSize([TestClass1 class]);
-        NSData *obj1Data = [NSData dataWithBytes:(__bridge const void*)(tclA) length:tclSize];
-        NSData *obj2Data = [NSData dataWithBytes:(__bridge const void*)(tclB) length:tclSize];
+        id <Greeter> greeter = [[BasicGreeter alloc] init];
+        [greeter greeting:@"Hello"];
         
-        NSLog(@"TestClass1 object tc1 contains %@", obj1Data);
-        NSLog(@"TestClass2 object tc2 contains %@", obj2Data);
-        NSLog(@"TestClass1 memory address= %p", [TestClass1 class]);
+        NSString *bundlePath;
+        
+        if (argc != 2) {
+            NSLog(@"please provide a path");
+            
+        } else {
+            bundlePath = [NSString stringWithUTF8String:argv[1]];
+            NSBundle *greeterBundle = [NSBundle bundleWithPath:bundlePath];
+            
+            if (greeterBundle == nil) {
+                NSLog(@"bundle not found");
+                
+            } else {
+                NSError *error;
+                BOOL isLoaded = [greeterBundle loadAndReturnError:&error];
+                
+                if (!isLoaded) {
+                    NSLog(@"Error = %@", [error localizedDescription]);
+                    
+                } else {
+                    Class greeterClass = [greeterBundle principalClass]; //classNamed:"GreeterClass"
+                    greeter = [[greeterClass alloc] init];
+                    NSLog(@"%@", [greeter greeting:@"hello"]);
+                    
+                    greeter = nil;
+                    BOOL isUnloaded = [greeterBundle unload];
+                    if (!isUnloaded) {
+                        NSLog(@"Couldn't unload bundle");
+                    }
+                }
+            }
+        }
+        
+//        TestClass1 *tclA = [[TestClass1 alloc] init];
+//        tclA->myInt = 0xa5a5a5a5;
+//        TestClass1 *tclB = [[TestClass1 alloc] init];
+//        tclB->myInt = 0xc3c3c3c3;
+//        long tclSize = class_getInstanceSize([TestClass1 class]);
+//        NSData *obj1Data = [NSData dataWithBytes:(__bridge const void*)(tclA) length:tclSize];
+//        NSData *obj2Data = [NSData dataWithBytes:(__bridge const void*)(tclB) length:tclSize];
+//        
+//        NSLog(@"TestClass1 object tc1 contains %@", obj1Data);
+//        NSLog(@"TestClass2 object tc2 contains %@", obj2Data);
+//        NSLog(@"TestClass1 memory address= %p", [TestClass1 class]);
         
 //        NSString *str = @"greeting";
 //        CFStringRef cstr = (__bridge_retained CFStringRef)str;
